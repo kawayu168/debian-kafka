@@ -5,7 +5,9 @@ FROM debian:latest
 MAINTAINER Haruki Yukawa
 
 # Install packages
-RUN apt-get update && DEBIAN_FRONTEND=noninteractive apt-get -y install sudo kafkacat git maven default-jdk wget vim awscli
+RUN apt-get update && \
+    DEBIAN_FRONTEND=noninteractive apt-get -y install sudo kafkacat git maven default-jdk wget vim awscli && \
+    rm -rf /var/lib/apt/lists/*
 
 ## Set a default user. Available via runtime flag `--user docker`
 ## Add user to 'staff' group, granting them write privileges to /usr/local/lib/R/site.library
